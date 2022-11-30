@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BUGbehevior : MonoBehaviour
 {
+    [SerializeField] private float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class BUGbehevior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(0,0,speed * Time.deltaTime);
     }
 }
