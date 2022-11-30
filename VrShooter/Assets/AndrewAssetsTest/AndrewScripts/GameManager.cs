@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,10 @@ public class GameManager : MonoBehaviour
     private int _highscore;
 
     //serialized variables
-    [SerializeField] private GameObject livesHoloDeck;
+    [SerializeField] private GameObject livesHolo;
+    [SerializeField] private List<GameObject> livesHoloDeck = new List<GameObject>();
+    [SerializeField] private List<Transform> holoPoints = new List<Transform>();
+    [SerializeField] private TMP_Text scoreText;
     
 
     //public variables
@@ -31,14 +35,26 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+        SpawnHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        scoreText.text = "Score: \n"+_highscore.ToString();
     }
 
 
+    void SpawnHealth()
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            livesHoloDeck.Add(Instantiate(livesHolo, holoPoints[i].position, Quaternion.identity));
+        }
+    }
+
+    void DespawnHealth()
+    {
+        livesHoloDeck.Remove(livesHoloDeck[livesHoloDeck.Count - 1]);
+    }
 }
