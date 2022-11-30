@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
                 Player.instance.playerValues.Score += Player.instance.playerValues.scorePerHit;
                 return;
             }
+        Destroy(gameObject);
     }
 
     void FixedUpdate()
