@@ -414,8 +414,13 @@ MonoBehaviour:
     timeSinceLastShot: 0
   playerValues:
     score: 0
+    scoreText: {fileID: 0}
+    DisplayText: 
     health: 0
     scorePerHit: 0
+    shield: {fileID: 0}
+    startPoint: {x: 0, y: 0, z: 0}
+    shields: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
