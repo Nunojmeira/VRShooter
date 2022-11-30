@@ -26,12 +26,13 @@ public struct ShootingVariables
 public struct PlayerVariables
 {
     [SerializeField] int score;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshPro scoreText;
     [SerializeField] string DisplayText;
     public int health;
     public int scorePerHit;
     public GameObject shield;
     public Vector3 startPoint;
+    public float offset;
     [HideInInspector] public List<GameObject> shields;
 
     public int Score { get => score; set { score = value; scoreText.text = DisplayText + '\n' + value.ToString(); } }
@@ -56,10 +57,15 @@ public class Player : MonoBehaviour
         Vector3 vec = playerValues.startPoint;
         for (int i = 0; i < playerValues.health; i++)
         {
-            vec.x += 0.5f;
-            playerValues.shields.Add(Instantiate(playerValues.shield, vec, Quaternion.identity));
-        }
+            vec.x += playerValues.offset;
+            var obj = Instantiate(playerValues.shield, vec, Quaternion.identity);
+            obj.transform.SetParent(GameManager.instance.expApp.transform);
+            playerValues.shields.Add(obj);
             
+        }
+        playerValues.Score = playerValues.Score;
+
+
     }
 
     // Update is called once per frame
@@ -68,7 +74,7 @@ public class Player : MonoBehaviour
         shootingValues.timeSinceLastShot += Time.deltaTime;
 
         if (shootingValues.timeSinceLastShot >= shootingValues.timeBetweenShots &&
-            VRDevice.Device.GetButtonDown(VRButton.Trigger))
+            (VRDevice.Device.GetButtonDown(VRButton.Trigger) || Input.GetMouseButtonDown(0)))
             shootingValues.gun.Shoot(ref shootingValues);
             
     }

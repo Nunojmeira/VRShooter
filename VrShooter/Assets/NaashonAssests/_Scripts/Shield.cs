@@ -5,10 +5,10 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         foreach (var tag in GameManager.instance.enemyTags)
-            if (other.transform.CompareTag(tag))
+            if (other.CompareTag(tag))
             {   
                 if (Player.instance.playerValues.shield)
                 Player.instance.playerValues.health--;

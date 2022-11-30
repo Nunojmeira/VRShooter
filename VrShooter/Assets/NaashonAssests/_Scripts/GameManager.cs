@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public List<string> enemyTags = new List<string>();
     GameState state = GameState.Gameplay;
+    public GameObject expApp;
     public GameState gameState { get => state; set{ EventManager.ChangeStateEnd(); state = value; EventManager.ChangeStateBegin(state); } }
     void Awake()
     {
