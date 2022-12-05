@@ -28,9 +28,8 @@ public class Spawner : MonoBehaviour
             float spwPosY = Random.RandomRange(spwPosYmin, spwPosYmax);
             Vector3 pos = new Vector3(spwPosX, spwPosY, 18f);
 
-        Instantiate(OBJ, pos, Quaternion.identity);
+            Instantiate(OBJ, pos, Quaternion.identity);
             spwTime = 4;
         }
-
     }
 }
