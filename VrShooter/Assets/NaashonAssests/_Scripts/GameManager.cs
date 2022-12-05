@@ -11,15 +11,15 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public List<string> enemyTags = new List<string>();
     GameState state = GameState.Gameplay;
-    public GameObject expApp;
-    public GameState gameState { get => state; set{ EventManager.ChangeStateEnd(); state = value; EventManager.ChangeStateBegin(state); } }
+    public GameState gameState { get => state; set { EventManager.ChangeStateEnd(); state = value; EventManager.ChangeStateBegin(); } }
     void Awake()
     {
-        if (!instance) instance = this;
+        if (!instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
     }
-
-
 }

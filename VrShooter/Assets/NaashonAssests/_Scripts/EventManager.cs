@@ -24,7 +24,7 @@ public static class EventManager
         }
     }
 
-    public static void ChangeStateBegin(GameState newState)
+    public static void ChangeStateBegin()
     {
         switch (GameManager.instance.gameState)
         {
