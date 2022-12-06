@@ -36,7 +36,9 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
     public SpawnVariables spawnVariables;
+    public SpawnVariables resetSpawnVariables;
     public EnemyValues enemyValues;
+    public EnemyValues resetEnemyValues;
 
     float timeBetweenSpawns = 0;
     float spawnsBetweenSpawnSpeedUp = 0;
@@ -56,9 +58,24 @@ public class EnemyManager : MonoBehaviour
         
     }
 
+    void Start()
+    {
+        resetEnemyValues = enemyValues;
+        resetSpawnVariables = spawnVariables;
+        EventManager.OnGamePlayStart += OnGamePlayStart;
+    }
+
+    private void OnGamePlayStart()
+    {
+        spawnVariables = resetSpawnVariables;
+        enemyValues = resetEnemyValues;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (GameManager.instance.gameState == GameState.Gameover) return;
+
         timeBetweenSpawns += Time.fixedDeltaTime;
         timeBetweenEnemySpeedUp += Time.fixedDeltaTime;
         

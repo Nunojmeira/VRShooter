@@ -78,12 +78,12 @@ public struct PlayerVariables
                     obj.transform.SetParent(GameSceneManager.instance.expApp.transform);
                     shields.Add(obj);
                 }
+            }
 
-                if (health <= 0)
-                {
-                    GameManager.instance.gameState = GameState.Gameover;
-                    return;
-                }  
+            if (shields.Count <= 0)
+            {
+                GameManager.instance.gameState = GameState.Gameover;
+                return;
             }
         } 
     }
@@ -108,6 +108,13 @@ public class Player : MonoBehaviour
         playerValues.Health = playerValues.startingHealth;
         playerValues.Score = playerValues.Score;
         //shootingValues.gun.transform.position = new Vector3(0, 1.1f, 0.7f);
+    }
+
+    void OnGameOverEnd()
+    {
+        playerValues.Health = playerValues.startingHealth;
+        playerValues.Score = 0;
+        shootingValues.timeSinceLastShot = 0;
     }
 
     // Update is called once per frame

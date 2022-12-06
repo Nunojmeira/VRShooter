@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Examples/Scenes/Example.unity
     guid: 17d10320f148ee64488837d5f8008cfd
   - enabled: 1
-    path: Assets/Scenes/ANDREW_SCENE.unity
+    path: Assets/Scenes/Main_Scene.unity
     guid: c901df0e027ed1f4394073fc87563491
   m_configObjects: {}

@@ -11,6 +11,7 @@ public class GameSceneManager : MonoBehaviour
     public List<string> enemyTags = new List<string>();
     public List<string> bulletTags = new List<string>();
     public GameObject expApp;
+    public GameObject UI_Button;
     public string displayText;
     [SerializeField] TextMeshPro timeText;
     float timeAlive;
@@ -45,6 +46,8 @@ public class GameSceneManager : MonoBehaviour
     {
         TimeAlive = 0;
         SoundManager.instance.PlayRandomSong();
+        EventManager.OnGameOverStart += OnGameOver;
+        EventManager.OnGameOverEnd += OnGameOverEnd;
     }
 
     void FixedUpdate()
@@ -53,5 +56,18 @@ public class GameSceneManager : MonoBehaviour
             TimeAlive += Time.fixedDeltaTime;
     }
 
+    void OnGameOver()
+    {
+        UI_Button.SetActive(true);
+        foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            Destroy(enemy);
+    }
+
+
+    void OnGameOverEnd()
+    {
+        UI_Button.SetActive(false);
+        TimeAlive = 0;
+    }
 
 }

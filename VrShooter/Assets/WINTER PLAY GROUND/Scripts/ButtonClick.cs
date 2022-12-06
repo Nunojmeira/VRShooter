@@ -2,18 +2,25 @@
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+[System.Serializable]
+public enum ButtonType
+{
+    Restart,
+    Exit
+}
 public class ButtonClick : MonoBehaviour {
-    [SerializeField] private bool isExit = true;
+
+    [SerializeField] ButtonType type;
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Bullet" && isExit)
-        {
-            Debug.Log("Exit");
-        }
-        else if (collision.gameObject.tag == "Bullet" && !isExit)
-        {
-            Debug.Log("RESTART");
-        }
+        foreach (var tag in GameSceneManager.instance.bulletTags)
+            if (collision.transform.CompareTag(tag))
+            {
+                Debug.Log(tag);
+                if (type == ButtonType.Restart)
+                    GameManager.instance.gameState = GameState.Gameplay;
+                else Application.Quit();
+            }
     }
 
 
