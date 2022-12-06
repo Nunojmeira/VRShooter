@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
        foreach (var tag in GameSceneManager.instance.bulletTags)
             if (other.transform.CompareTag(tag))
             {
+                SoundManager.instance.PlaySound("EnemyDeath");
                 Player.instance.playerValues.Score += Player.instance.playerValues.scorePerHit;
                 Destroy(other.gameObject);
                 Destroy(gameObject);

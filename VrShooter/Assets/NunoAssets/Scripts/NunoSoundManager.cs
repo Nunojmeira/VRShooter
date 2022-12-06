@@ -4,9 +4,9 @@ using UnityEngine;
 using System;
 using UnityEngine.Audio;
 
-public class SoundManager : MonoBehaviour
+public class NunoSoundManager : MonoBehaviour
 {
-    public static SoundManager Instance;
+    public static NunoSoundManager Instance;
 
     public Sound[] sounds;
 

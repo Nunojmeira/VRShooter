@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
         bullet.transform.SetParent(GameSceneManager.instance.expApp.transform);
         bullet.GetComponent<Rigidbody>().velocity = values.handTransform.forward * values.bulletForce;
         values.timeSinceLastShot = 0;
+        SoundManager.instance.PlaySound("GunShot");
     }
 
     void Update()

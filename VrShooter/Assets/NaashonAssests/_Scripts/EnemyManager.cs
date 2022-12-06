@@ -25,15 +25,12 @@ public struct SpawnVariables
     public float minTimeBetweenSpawns;
     public float minTimeBetweenEnemySpeedUp;
 
-    [SerializeField] int level;
-    [SerializeField] TextMeshPro levelDisplay;
     public string DisplayText;
 
 
     public Vector3 BottomBackLeftBound;
     public Vector3 TopFrontRightBound;
 
-    public int Level { get => level; set { level = value; levelDisplay.text = DisplayText + '\n' + level.ToString(); } }
 }
 public class EnemyManager : MonoBehaviour
 {
@@ -57,10 +54,6 @@ public class EnemyManager : MonoBehaviour
         if (!instance) instance = this;
         else Destroy(gameObject);
         
-    }
-    void Start()
-    {
-        spawnVariables.Level = spawnVariables.Level;
     }
 
     // Update is called once per frame
@@ -121,7 +114,6 @@ public class EnemyManager : MonoBehaviour
                 spawnCycles = 0;
             }
 
-            ++spawnVariables.Level;
             timeBetweenSpawns = 0;
         }
     }

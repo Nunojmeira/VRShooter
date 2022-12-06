@@ -11,7 +11,7 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    GameState state = GameState.Gameplay;
+    [SerializeField] GameState state = GameState.Gameplay;
     public GameState gameState { get => state; set { EventManager.ChangeStateEnd(); state = value; EventManager.ChangeStateBegin(); } }
     void Awake()
     {

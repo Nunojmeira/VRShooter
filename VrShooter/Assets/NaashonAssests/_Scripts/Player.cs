@@ -46,6 +46,7 @@ public struct PlayerVariables
             {
                 it = temp - health;
                 temp = -1;
+                SoundManager.instance.PlaySound("HealthLoss");
             }
             else
             {
@@ -58,7 +59,7 @@ public struct PlayerVariables
                 for (int i = 0; i < shields.Count; i++)
                     GameManager.Destroy(shields[i]);
                 shields.Clear();
-                GameManager.instance.gameState = GameState.Gameover;
+                //GameManager.instance.gameState = GameState.Gameover;
                 return;
             }
 
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
     {
         playerValues.Health = playerValues.startingHealth;
         playerValues.Score = playerValues.Score;
-        shootingValues.gun.transform.position = new Vector3(0, 1.1f, 0.7f);
+        //shootingValues.gun.transform.position = new Vector3(0, 1.1f, 0.7f);
     }
 
     // Update is called once per frame
