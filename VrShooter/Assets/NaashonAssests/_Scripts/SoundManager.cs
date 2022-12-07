@@ -22,6 +22,13 @@ public class SoundManager : MonoBehaviour
            
     }
 
+    void Start()
+    {
+        PlayRandomSong();
+        EventManager.OnGameOverStart += OnGameOver;
+        EventManager.OnGameOverEnd += OnGameOverEnd;
+    }
+
     public void PauseBGMusic()
     {
         BGAudioSource.Pause();
@@ -44,6 +51,27 @@ public class SoundManager : MonoBehaviour
     {
         var sound = sounds.Find(x => x.name == soundName);
         if (sound == null) return;
+        if (sound.name == "HealthLoss")
+        {
+            sound.volume = 0.5f;
+            SoundFXAudioSource.volume = 1f;
+        }
+        else
+        {
+            sound.volume = 0.1f;
+            SoundFXAudioSource.volume = 0.5f;
+        }
         SoundFXAudioSource.PlayOneShot(sound.clip);
+    }
+
+    void OnGameOver()
+    {
+        if (BGAudioSource.isPlaying)
+            BGAudioSource.Stop();
+    }
+
+    void OnGameOverEnd()
+    {
+        PlayRandomSong();
     }
 }

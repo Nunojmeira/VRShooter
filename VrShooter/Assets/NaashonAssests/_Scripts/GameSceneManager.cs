@@ -12,6 +12,8 @@ public class GameSceneManager : MonoBehaviour
     public List<string> bulletTags = new List<string>();
     public GameObject expApp;
     public GameObject UI_Button;
+    [SerializeField] GameObject powerUp;
+    List<Vector3> powerUpPositions = new List<Vector3>();
     public string displayText;
     [SerializeField] TextMeshPro timeText;
     float timeAlive;
@@ -45,9 +47,10 @@ public class GameSceneManager : MonoBehaviour
     void Start()
     {
         TimeAlive = 0;
-        SoundManager.instance.PlayRandomSong();
         EventManager.OnGameOverStart += OnGameOver;
         EventManager.OnGameOverEnd += OnGameOverEnd;
+        foreach (var obj in GameObject.FindGameObjectsWithTag("PowerUp"))
+            powerUpPositions.Add(obj.transform.position);
     }
 
     void FixedUpdate()
@@ -61,6 +64,8 @@ public class GameSceneManager : MonoBehaviour
         UI_Button.SetActive(true);
         foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             Destroy(enemy);
+        foreach (var power in GameObject.FindGameObjectsWithTag("PowerUp"))
+            Destroy(power);
     }
 
 
@@ -68,6 +73,9 @@ public class GameSceneManager : MonoBehaviour
     {
         UI_Button.SetActive(false);
         TimeAlive = 0;
+
+        foreach (var position in powerUpPositions)
+            Instantiate(powerUp, position, Quaternion.identity).transform.SetParent(expApp.transform);
     }
 
 }
