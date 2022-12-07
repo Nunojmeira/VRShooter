@@ -51,16 +51,19 @@ public class SoundManager : MonoBehaviour
     {
         var sound = sounds.Find(x => x.name == soundName);
         if (sound == null) return;
-        if (sound.name == "HealthLoss")
+        switch (sound.name)
         {
-            sound.volume = 0.5f;
-            SoundFXAudioSource.volume = 1f;
+            case "HealthLoss":
+            case "BackOff":
+                sound.volume = 0.5f;
+                SoundFXAudioSource.volume = 1f;
+                break;
+            default:
+                sound.volume = 0.1f;
+                SoundFXAudioSource.volume = 0.5f;
+                break;
         }
-        else
-        {
-            sound.volume = 0.1f;
-            SoundFXAudioSource.volume = 0.5f;
-        }
+
         SoundFXAudioSource.PlayOneShot(sound.clip);
     }
 

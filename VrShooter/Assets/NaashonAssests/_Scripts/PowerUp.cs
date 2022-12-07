@@ -9,6 +9,8 @@ public class PowerUp : MonoBehaviour
        foreach (var tag in GameSceneManager.instance.bulletTags)
             if (other.transform.CompareTag(tag))
             {
+                SoundManager.instance.PlaySound("BackOff");
+                SoundManager.instance.PlaySound("UsePowerUp");
                 Destroy(other.gameObject);
                 foreach (var obj in GameObject.FindGameObjectsWithTag("Enemy"))
                 {
