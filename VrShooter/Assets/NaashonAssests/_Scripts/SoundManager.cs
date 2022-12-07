@@ -54,9 +54,12 @@ public class SoundManager : MonoBehaviour
         switch (sound.name)
         {
             case "HealthLoss":
-            case "BackOff":
                 sound.volume = 0.5f;
                 SoundFXAudioSource.volume = 1f;
+                break;
+            case "BackOff":
+                sound.volume = 1f;
+                SoundFXAudioSource.volume = 1.5f;
                 break;
             default:
                 sound.volume = 0.1f;

@@ -70,7 +70,7 @@ public struct PlayerVariables
                     GameManager.Destroy(shields[shields.Count - 1]);
                     shields.RemoveAt(shields.Count - 1);
                 }
-                else if (temp > 0)
+                else if (temp > 0 && shields.Count < startingHealth)
                 {
                     var vec = startPoint;
                     vec.x += offset * shields.Count;
@@ -107,6 +107,7 @@ public class Player : MonoBehaviour
     {
         playerValues.Health = playerValues.startingHealth;
         playerValues.Score = playerValues.Score;
+        EventManager.OnGameOverEnd += OnGameOverEnd;
         //shootingValues.gun.transform.position = new Vector3(0, 1.1f, 0.7f);
     }
 
@@ -138,10 +139,4 @@ public class Player : MonoBehaviour
                 return;
             }     
     }
-
-    
-
-
-
-
 }
