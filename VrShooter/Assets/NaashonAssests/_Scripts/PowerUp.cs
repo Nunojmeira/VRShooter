@@ -22,4 +22,9 @@ public class PowerUp : MonoBehaviour
                 return;
             }
    }
+
+    void Update()
+    {
+        transform.Rotate(new Vector3(0, 1, 0), 80 * Time.deltaTime);  
+    }
 }
