@@ -235,40 +235,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086756403}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d3746bc29a173f468a74d5f7ad244ac, type: 3}
+  m_Script: {fileID: 11500000, guid: a174f60d055f81448bbc66bbafb837a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Track1
-    clip: {fileID: 8300000, guid: 828a2058d13fb824a81e80c182a7cebf, type: 3}
-    volume: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Track2
-    clip: {fileID: 8300000, guid: ee98eca37921cb547ab225987802aa06, type: 3}
-    volume: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Track3
-    clip: {fileID: 8300000, guid: f7f835c867b28f9469bc3ba8c1e1445e, type: 3}
-    volume: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: PistolShoot
-    clip: {fileID: 8300000, guid: 598392cef1d8d0c4fb482c4cf3131128, type: 3}
-    volume: 1
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
     loop: 0
     source: {fileID: 0}
-  - name: ShieldBreak
-    clip: {fileID: 8300000, guid: de6813ce3de3f1b4681a466a3d17a56c, type: 3}
-    volume: 1
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
     loop: 0
     source: {fileID: 0}
-  - name: EnemyDeath
-    clip: {fileID: 8300000, guid: 850e293ecfc64054f9840d5918b1145f, type: 3}
-    volume: 1
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
     loop: 0
     source: {fileID: 0}
 --- !u!4 &1086756405

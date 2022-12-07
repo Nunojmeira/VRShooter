@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
         playerValues.Health = playerValues.startingHealth;
         playerValues.Score = playerValues.Score;
         EventManager.OnGameOverEnd += OnGameOverEnd;
-        //shootingValues.gun.transform.position = new Vector3(0, 1.1f, 0.7f);
+
     }
 
     void OnGameOverEnd()
